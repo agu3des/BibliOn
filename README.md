@@ -1,4 +1,5 @@
-<h1 align="center">PROJETO BIBLION - REACT/h1>
+<h1 align="center">PROJETO BIBLION - REACT</h1>
+
 
 `"Livraria Virtual"` - Aplicação que simula um sistema de um sebo. 
 
