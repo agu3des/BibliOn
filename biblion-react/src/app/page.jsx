@@ -12,20 +12,6 @@ export default async function Home() {
 
   return (
     <>
-      <meta charSet="UTF-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Livraria Biblion</title>
-      <link rel="shortcut icon" href="img/icon/iconnav.png" />
-      <link href="style/img.css" rel="stylesheet" type="text/css" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-      <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Pacifico&display=swap" rel="stylesheet"/>
-      <style
-        dangerouslySetInnerHTML={{
-          __html:
-            "\n  body {\n    font-family: 'Oswald', sans-serif;\n  }\n  \n  .logo {\n    height: 3.2rem;\n    margin-left: 40%;\n  }\n  \n  .arrow a {\n    color: white;\n  }\n\n  .arrow {\n    padding-top: 20px;\n    padding-left: 20px;\n    background-color: rgba(190, 139, 139, 0.81);\n    margin-bottom: 6%;\n  }\n\n  .arrow a:hover {\n    color: deeppink;\n  }\n\n  @media screen and (max-width: 600px) {\n    .menor{\n      flex-wrap: wrap;\n    }\n\n  }\n  "
-        }}
-      />
       <header>
         <div className="arrow flex">
           <a href="index.html">
@@ -40,7 +26,7 @@ export default async function Home() {
               <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
             </svg>
           </a>
-          <img src="biblion-react\src\app\img\logo.png" alt="logo" className="logo" />
+          <img src="../public/img/logo.png"/>
         </div>
       </header>
       <main>
@@ -54,7 +40,7 @@ export default async function Home() {
             <div className="mb-6 md:mb-0">
               <a href="index.html" className="flex items-center">
                 <img
-                  src="img/logo-livro.png"
+                  src="native/img/logo-livro.png"
                   className="h-8 me-2"
                   alt="Biblion Logo"
                 />
