@@ -3,7 +3,7 @@ import Storage from '@/services/supabase';
 import * as img from '@/components/img';
 import Header from '@/components/header';
 import Footer from '../components/footer';
-
+import BooksForm from '@/components/booksForm';
 
 async function getData() {
   return Storage.read('books');
@@ -27,6 +27,7 @@ export default async function Home() {
       <div>
         <Footer />
       </div>
+      <BooksForm />
     </>
   );
 }
