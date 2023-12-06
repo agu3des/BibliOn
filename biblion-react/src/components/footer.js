@@ -1,49 +1,13 @@
-import BooksCards from '@/components/books';
-import Storage from '@/services/supabase';
+import * as img from '@/components/img';
 
-async function getData() {
-  return Storage.read('books');
-}
-
-export default async function Home() {
-  const books = await getData();
-
-  console.log(JSON.stringify(books, null, 2))
-
-  return (
-    <>
-      <header>
-        <div className="arrow flex">
-          <a href="index.html">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width={40}
-              height={40}
-              fill="currentColor"
-              className="bi bi-house"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-            </svg>
-          </a>
-          <img src="../public/img/logo.png"/>
-        </div>
-      </header>
-      <main>
-        <div className="lg:max-w-screen-lg mx-auto books grid grid-cols-3 gap-6 pt-3 pb-3">
-          {books.map((book) => (<BooksCards {...book} key={book.id} />))}
-        </div>
-      </main>
-      <footer className="pt-4 text-white bg-[#debcbe] dark:bg-gray-950">
+export default function Footer(){
+    return (
+        <footer className="pt-4 text-white bg-[#debcbe] dark:bg-gray-950">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
               <a href="index.html" className="flex items-center">
-                <img
-                  src="native/img/logo-livro.png"
-                  className="h-8 me-2"
-                  alt="Biblion Logo"
-                />
+              <img.BiblionLogo className='w-20'/>
                 <span className="self-center text-2xl font-semibold whitespace-nowrap hover:text-black hover:underline dark:text-white">
                   BIBLION
                 </span>
@@ -119,7 +83,7 @@ export default async function Home() {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm sm:text-center dark:text-gray-400">
               © 2023{" "}
-              <a href="https://flowbite.com/" className="hover:underline">
+              <a href="https://biblion.com/" className="hover:underline">
                 Biblion™
               </a>
               . All Rights Reserved.
@@ -217,8 +181,5 @@ export default async function Home() {
           </div>
         </div>
       </footer>
-    </>
-  );
+    )
 }
-
-
