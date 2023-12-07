@@ -1,9 +1,8 @@
-import BooksCards from '@/components/books';
-import Storage from '@/services/supabase';
-import * as img from '@/components/img';
-import Header from '@/components/header';
-import Footer from '../components/footer';
+'use client';
 
+import BooksCards from '@/components/books';
+import BooksForm from '@/components/booksForm';
+import Storage from '@/services/supabase';
 
 async function getData() {
   return Storage.read('books');
@@ -16,17 +15,12 @@ export default async function Home() {
 
   return (
     <>
-      <div>
-        <Header />
-      </div>
       <main>
         <div className="lg:max-w-screen-lg mx-auto books grid grid-cols-3 gap-6 pt-3 pb-3">
           {books.map((book) => (<BooksCards {...book} key={book.id} />))}
         </div>
       </main>
-      <div>
-        <Footer />
-      </div>
+      <BooksForm />
     </>
   );
 }
