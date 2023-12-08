@@ -1,7 +1,8 @@
 'use client';
 
-import { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 import Storage from '@/services/supabase';
+import { validEmail } from '@/components/regex';
 
 export const BookContext = createContext({});
 
@@ -19,16 +20,17 @@ export function BookProvider({ children }) {
 
   const [isShowBookForm, setIsShowBookForm] = useState(false);
 
-  const [bookFormData, setBookFormData] = useState(
-    initialBookFormData
-  );
+  const [bookFormData, setBookFormData] = useState(initialBookFormData);
+
+  const [email, setEmail] = useState('');
+
+  const [emailErr, setEmailErr] = useState(false);
 
   const handleCreateBook = async () => {
     setBookFormData(initialBookFormData);
 
     toggleShowBookForm();
   };
-
 
   const toggleShowBookForm = () => {
     setIsShowBookForm(!isShowBookForm);
@@ -56,6 +58,12 @@ export function BookProvider({ children }) {
     Storage.remove('books', id);
   };
 
+  const validate = async () => {
+     if (!validEmail.test(email)) {
+        setEmailErr(true);
+     }
+  }
+  
   return (
     <BookContext.Provider
       value={{
@@ -70,6 +78,8 @@ export function BookProvider({ children }) {
         createBook,
         removeBook,
         handleCreateBook,
+        validate,
+
       }}
     >
       {children}
