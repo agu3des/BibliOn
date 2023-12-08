@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Biblion({className='lg:flex'}) {
+export function Biblion({className='w-4'}) {
     return (
         <img
           src="/img/logoBiblion.svg"

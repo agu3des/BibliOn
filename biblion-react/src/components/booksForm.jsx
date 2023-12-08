@@ -1,41 +1,37 @@
-import { useInvestment } from '@/contexts/InvestmentContext';
+import { useBook } from '@/context/BooksContext';
 
 export default function BooksForm() {
   const {
-    isShowInvestmentForm,
-    toggleShowInvestmentForm,
-    investmentFormData,
-    setInvestmentFormData,
-    createInvestment,
-  } = useInvestment();
+    isShowBookForm,
+    toggleShowBookForm,
+    bookFormData,
+    setBookFormData,
+    createBook,
+  } = useBook();
 
   const handleChange = (event) => {
     let { name, value } = event.target;
 
-    setInvestmentFormData({ ...investmentFormData, [name]: value });
+    setBookFormData({ ...bookFormData, [name]: value });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    investmentFormData.value = Number(investmentFormData.value) * 100;
+    bookFormData.value = Number(bookFormData.value);
 
-    investmentFormData.created_at = new Date(
-      investmentFormData.created_at + 'T00:00:00-03:00'
-    ).toISOString();
+    createBook(bookFormData);
 
-    createInvestment(investmentFormData);
-
-    toggleShowInvestmentForm();
+    toggleShowBookForm();
   };
 
   return (
     <>
-      {isShowInvestmentForm && (
+      {isShowBookForm && (
         <div>
           <div
             className="fixed h-full w-full right-0 top-0 bg-black/50 z-10"
-            onClick={() => toggleShowInvestmentForm()}
+            onClick={() => toggleShowBookForm()}
           ></div>
           <div
             className="fixed bottom-0 right-0 top-0 z-[1045] flex w-96 max-w-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-neutral-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
@@ -43,14 +39,14 @@ export default function BooksForm() {
           >
             <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
               <h3 className="font-bold text-gray-800 dark:text-white">
-                Investimento
+                Livro Indicado
               </h3>
               <button
                 type="button"
                 className="investment-drawer-close inline-flex flex-shrink-0 justify-center items-center h-8 w-8 rounded-md text-gray-500 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white text-sm dark:text-gray-500 dark:hover:text-gray-400 dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
-                onClick={() => toggleShowInvestmentForm()}
+                onClick={() => toggleShowBookForm()}
               >
-                <span className="sr-only">Cadastro de Investimento</span>
+                <span className="sr-only">Cadastro da Sugestão</span>
                 <svg
                   className="w-3.5 h-3.5"
                   width={8}
@@ -74,6 +70,23 @@ export default function BooksForm() {
                     htmlFor="name"
                     className="block text-sm font-medium mb-2 dark:text-white"
                   >
+                    ID
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    onChange={handleChange}
+                    value={bookFormData.name}
+                    className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                    required=""
+                  />
+                </div>
+                <div className="mb-3">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium mb-2 dark:text-white"
+                  >
                     Nome
                   </label>
                   <input
@@ -81,7 +94,7 @@ export default function BooksForm() {
                     id="name"
                     name="name"
                     onChange={handleChange}
-                    value={investmentFormData.name}
+                    value={bookFormData.name}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
                   />
@@ -98,7 +111,7 @@ export default function BooksForm() {
                     id="value"
                     name="value"
                     onChange={handleChange}
-                    value={investmentFormData.value}
+                    value={bookFormData.value}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
                   />
@@ -108,14 +121,14 @@ export default function BooksForm() {
                     htmlFor="origin"
                     className="block text-sm font-medium mb-2 dark:text-white"
                   >
-                    Origem
+                    Autor
                   </label>
                   <input
                     type="text"
                     id="origin"
                     name="origin"
                     onChange={handleChange}
-                    value={investmentFormData.origin}
+                    value={bookFormData.origin}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
                   />
@@ -125,14 +138,14 @@ export default function BooksForm() {
                     htmlFor="category"
                     className="block text-sm font-medium mb-2 dark:text-white"
                   >
-                    Categoria
+                    Editora
                   </label>
                   <input
                     type="text"
                     id="category"
                     name="category"
                     onChange={handleChange}
-                    value={investmentFormData.category}
+                    value={bookFormData.category}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
                   />
@@ -142,31 +155,14 @@ export default function BooksForm() {
                     htmlFor="interest"
                     className="block text-sm font-medium mb-2 dark:text-white"
                   >
-                    Taxa
+                    Imagem
                   </label>
                   <input
                     type="text"
                     id="interest"
                     name="interest"
                     onChange={handleChange}
-                    value={investmentFormData.interest}
-                    className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
-                    required=""
-                  />
-                </div>
-                <div className="mb-3">
-                  <label
-                    htmlFor="created_at"
-                    className="block text-sm font-medium mb-2 dark:text-white"
-                  >
-                    Data
-                  </label>
-                  <input
-                    type="date"
-                    id="created_at"
-                    name="created_at"
-                    onChange={handleChange}
-                    value={investmentFormData.created_at}
+                    value={bookFormData.interest}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
                   />

@@ -1,26 +1,28 @@
 'use client';
 
+import { useEffect } from 'react';
 import BooksCards from '@/components/books';
-import BooksForm from '@/components/booksForm';
-import Storage from '@/services/supabase';
+import { useBook } from '@/context/booksContext';
 
-async function getData() {
-  return Storage.read('books');
-}
 
-export default async function Home() {
-  const books = await getData();
+export default function Home() {
+  const {
+    books,
+    loadBooks,
+  } = useBook();
 
-  console.log(JSON.stringify(books, null, 2))
+useEffect(() => {
+  loadBooks();
+}, []);
+
 
   return (
     <>
       <main>
-        <div className="lg:max-w-screen-lg mx-auto books grid grid-cols-3 gap-6 pt-3 pb-3">
+        <div className="grid grid-cols-3 max-sm:grid-cols-1 gap-3 pt-3 pb-3 pl-4 pr-4">
           {books.map((book) => (<BooksCards {...book} key={book.id} />))}
         </div>
       </main>
-      <BooksForm />
     </>
   );
 }
