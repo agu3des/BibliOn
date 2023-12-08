@@ -5,6 +5,8 @@
 
 ## Requisitos
 + `React`
++ `Supabase`
++ `Next`
 + `VS Code`
 
 ## Instalação
@@ -17,6 +19,7 @@
 ## Uso
 > Este projeto está sendo desenvolvido na disciplina de Linguagem de Script, no curso de Sistemas para Internet no Instituto Federal da Paraíba.
 + `JavaScript`
++ `Regex`
 + `React`
 
 ### 📝 Alunas
