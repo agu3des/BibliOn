@@ -10,8 +10,8 @@ export default function BooksCards({
   }) {
   return  ( 
     <div className="bg-white dark:bg-gray-700 shadow-md rounded-lg p-4">
-      <div className="max-sm:flex">
-        <img className="foto" src={image} width="100px" />
+      <div className="max-sm:flex max-sm:text-center">
+        <img className="foto m-auto" src={image} width="100px" />
         <div className="flex-col">
           <h3 className="p-2 mt-4 text-lg font-semibold text-gray-700 dark:text-white">{name}
           </h3>
