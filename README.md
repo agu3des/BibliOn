@@ -13,14 +13,16 @@
 1. Instale `React` na sua máquina (caso não tenha).
 2. Instale `Supabase` na sua máquina (caso não tenha).
 3. Baixe ou clone o projeto para o seu computador.
-4. Abra o terminal ou prompt de comando e navegue até o diretório do projeto.
-5. Execute o comando `npm run dev` para iniciar o programa.
+4. Adicone variáveis API_KEY e API_URL, em um arquivo chamado ´.env.local´
+5. Abra o terminal ou prompt de comando e navegue até o diretório do projeto.
+6. Execute o comando `npm run dev` para iniciar o programa.
 
 ## Uso
 > Este projeto está sendo desenvolvido na disciplina de Linguagem de Script, no curso de Sistemas para Internet no Instituto Federal da Paraíba.
 + `JavaScript`
 + `Regex`
 + `React`
++ `Supabase`
 
 ### 📝 Alunas
 
