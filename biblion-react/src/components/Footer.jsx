@@ -1,11 +1,11 @@
 'use client';
 
-import * as img from '@/components/img';
-import { useBook } from '@/context/booksContext';
-import BooksForm from '@/components/booksForm';
+import * as img from '@/components/Image';
+import { useBook } from '@/context/BooksContext';
+import BooksForm from '@/components/BooksForm';
 
-export default function Footer(){
-  const { handleCreateBook } = useBook();
+export default function Footer() {
+    const { handleCreateBook } = useBook();
 
     return (
       <>      
@@ -32,7 +32,7 @@ export default function Footer(){
                         <button
                           type="button"
                           className="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-white text-black hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-all text-sm dark:text-white dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800"
-                          onClick={() => handleCreateBook()}
+                          onClick={async () => await handleCreateBook()}
                         >
                           Forms
                         </button>

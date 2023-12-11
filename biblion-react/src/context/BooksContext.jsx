@@ -2,7 +2,7 @@
 
 import React, { createContext, useState, useContext } from 'react';
 import Storage from '@/services/supabase';
-import { validEmail } from '@/components/regex';
+import { validEmail } from '@/lib/regex';
 
 export const BookContext = createContext({});
 
@@ -73,6 +73,10 @@ export function BookProvider({ children }) {
         setIsShowBookForm,
         bookFormData,
         setBookFormData,
+        email,
+        setEmail,
+        emailErr,
+        setEmailErr,
         toggleShowBookForm,
         loadBooks,
         createBook,

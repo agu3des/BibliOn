@@ -1,8 +1,8 @@
 import { Oswald } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
-import { BookProvider } from '@/context/booksContext'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import { BookProvider } from '@/context/BooksContext'
 
 
 const oswald = Oswald({style: 'normal', weight: '400', preload: false, display: 'swap', serif: false})
@@ -20,11 +20,13 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/public/favicon.ico" type="image/icon" />
       </head>
       <body className={oswald.className}>
-        <Header />
-        <div>
-          <BookProvider>{children}</BookProvider>
-        </div>
-        <Footer />
+        <BookProvider>
+          <Header />
+          <div>
+            {children}
+          </div>
+          <Footer />
+        </BookProvider>
       </body>
     </html>
   )

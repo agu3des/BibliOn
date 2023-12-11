@@ -1,4 +1,4 @@
-import * as img from '@/components/img';
+import * as img from '@/components/Image';
 
 export default function Header(){
     return (

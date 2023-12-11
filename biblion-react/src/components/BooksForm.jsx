@@ -2,6 +2,9 @@ import { useBook } from '@/context/BooksContext';
 
 export default function BooksForm() {
   const {
+    email,
+    setEmail,
+    emailErr,
     isShowBookForm,
     toggleShowBookForm,
     bookFormData,
@@ -36,7 +39,7 @@ export default function BooksForm() {
             onClick={() => toggleShowBookForm()}
           ></div>
           <div
-            className="fixed bottom-0 right-0 top-0 z-[1045] flex w-96 max-w-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-neutral-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
+            className="fixed bottom-0 right-0 top-0 z-[1045] flex w-96 max-w-full flex-col border-none bg-white bg-clip-padding text-neutral-700 shadow-sm outline-none transition duration-300 ease-in-out dark:bg-gray-800 dark:text-neutral-200 [&[data-te-offcanvas-show]]:transform-none"
             tabIndex={-1}
           >
             <div className="flex justify-between items-center py-3 px-4 border-b dark:border-gray-700">
@@ -66,18 +69,17 @@ export default function BooksForm() {
             </div>
             <div className="p-4 overflow-y-auto">
               <form onSubmit={(event) => handleFormSubmit(event)}>
-                <input type="hidden" id="id" name="id" />
                 <div className="mb-3">
                   <label
-                    htmlFor="name"
+                    htmlFor="id"
                     className="block text-sm font-medium mb-2 dark:text-white"
                   >
-                    ID
+                    ISBN
                   </label>
                   <input
                     type="text"
                     id="id"
-                    name="isbn"
+                    name="id"
                     onChange={handleChange}
                     value={bookFormData.id}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
@@ -160,25 +162,27 @@ export default function BooksForm() {
                     Imagem
                   </label>
                   <input
-                    type="text"
+                    type="file"
                     id="imagem"
                     name="imagem"
                     onChange={handleChange}
                     value={bookFormData.imagem}
                     className="py-3 px-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
                     required=""
-                  />
+                    />
                 </div>
                 <div className="mb-3">
                   <label
                     htmlFor="interest"
                     className="block text-sm font-medium mb-2 dark:text-white"
-                  >
+                    >
                     Digite seu email:
                   </label>
                   <input
                       type="email"
-                      placeholder="Email"
+                      name="email"
+                      className="py-3 px-4 mb-4 block w-full border border-gray-200 rounded-md text-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400"
+                    required=""
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                   />
@@ -189,7 +193,7 @@ export default function BooksForm() {
                       Enviar
                     </button>
                   </div>
-                  {emailErr && <p>Seu email não é válido!</p>}
+                  {emailErr && <p className="text-sm">Seu email não é válido!</p>}
                 </div>
               </form>
             </div>

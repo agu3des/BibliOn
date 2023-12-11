@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import BooksCards from '@/components/books';
-import { useBook } from '@/context/booksContext';
+import BooksCards from '@/components/BooksCards';
+import { useBook } from '@/context/BooksContext';
 
 
 export default function Home() {
