@@ -26,6 +26,20 @@ export function BookProvider({ children }) {
 
   const [emailErr, setEmailErr] = useState(false);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    if (currentIndex < books.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
   const handleCreateBook = async () => {
     setBookFormData(initialBookFormData);
 
@@ -77,6 +91,10 @@ export function BookProvider({ children }) {
         setEmail,
         emailErr,
         setEmailErr,
+        currentIndex, 
+        setCurrentIndex,
+        handleNext,
+        handlePrevious,
         toggleShowBookForm,
         loadBooks,
         createBook,
