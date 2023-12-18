@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import * as img from '@/components/Image';
 import { useBook } from '@/context/BooksContext';
 import BooksForm from '@/components/BooksForm';
@@ -7,17 +8,21 @@ import BooksForm from '@/components/BooksForm';
 export default function Footer() {
     const { handleCreateBook } = useBook();
 
+    const router = useRouter();
+
+    const goToHome = (event) => {
+      event.preventDefault();
+      router.push('/');
+    }
+
     return (
       <>      
         <footer className="pt-4 text-white bg-[#debcbe] dark:bg-gray-950">
           <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
-                <a href="index.html" className="flex items-center">
+                <a href="" onClick={goToHome} className="flex items-center">
                   <img.BiblionLogo className="w-20">
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap hover:text-black hover:underline dark:text-white">
-                      BIBLION
-                    </span>
                   </img.BiblionLogo>
                 </a>
               </div>

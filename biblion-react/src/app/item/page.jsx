@@ -1,19 +1,29 @@
-import { useRouter } from 'next/navigation';
-import * as img from '@/components/Image';
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import { Oswald } from 'next/font/google'
-import './globals.css'
+'use client';
+
+import React from "react";
+import { Oswald } from 'next/font/google';
+import '@/app/globals.css';
+import '@supabase/supabase-js';
+import { useBook } from '@/context/BooksContext';
+import { useEffect } from 'react';
 
 
-const router = useRouter();
 
-const goToMain = (event) => {
-  event.preventDefault();
-  router.push('/');
-    }
+export default function Home({
+    image,
+    name
+    }) {
 
-return (
+    const {
+        books,
+        loadBooks,
+        } = useBook();
+    
+useEffect(() => {
+    loadBooks();
+}, []);
+
+    return (
     <>
     <div className="bg-white">
         <div className="pt-6">
@@ -67,35 +77,12 @@ return (
             </li>
             </ol>
         </nav>
+        {books.map((book) => (<Home {...book} key={book.id} />))}
         {/* Image gallery */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
             <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
             <img
-                src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg"
-                alt="Two each of gray, white, and black shirts laying flat."
-                className="h-full w-full object-cover object-center"
-            />
-            </div>
-            <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
-            <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg"
-                alt="Model wearing plain black basic tee."
-                className="h-full w-full object-cover object-center"
-                />
-            </div>
-            <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
-                <img
-                src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg"
-                alt="Model wearing plain gray basic tee."
-                className="h-full w-full object-cover object-center"
-                />
-            </div>
-            </div>
-            <div className="aspect-h-5 aspect-w-4 lg:aspect-h-4 lg:aspect-w-3 sm:overflow-hidden sm:rounded-lg">
-            <img
-                src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg"
-                alt="Model wearing plain white basic tee."
+                src={image}
                 className="h-full w-full object-cover object-center"
             />
             </div>
@@ -103,8 +90,8 @@ return (
         {/* Product info */}
         <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
             <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
-                Basic Tee 6-Pack
+            <h1 className="text-2xl font-bold tracking-tight text-black sm:text-3xl">
+                {name}
             </h1>
             </div>
             {/* Options */}
@@ -252,5 +239,5 @@ return (
         </div>
     </div>
     </>
-)
-
+ )
+}

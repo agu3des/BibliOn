@@ -22,7 +22,6 @@ export default function RootLayout({ children }) {
       <body className={oswald.className}>
         <BookProvider>
           <Header />
-          <Menu />
           <div>
             {children}
           </div>
