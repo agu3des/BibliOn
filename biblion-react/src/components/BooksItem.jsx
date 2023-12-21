@@ -20,7 +20,7 @@ export default function Home({
     <div className="bg-white text-center">
         <div className="pt-6">
         {/* Image gallery */}
-        <div className="mx-auto mt-6">
+        <div className="mx-auto mt-6 ">
             <div>
                 <img
                     src={image}
@@ -110,7 +110,7 @@ export default function Home({
                 <p className="sr-only">4 out of 5 stars</p>
                 <a
                     href="#"
-                    className="ml-3 text-sm font-medium text-[#debcbe] hover:text-pink-500"
+                    className="ml-3 text-sm font-medium text-[#debcbe] hover:text-pink-500 dark:text-gray-800"
                 >
                     117 reviews
                 </a>
@@ -120,7 +120,7 @@ export default function Home({
             <form>  
                 <button
                 type="submit"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#debcbe] px-8 py-3 text-base font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-[#debcbe] px-8 py-3 text-base font-medium text-white hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-gray-800 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800"
                 >
                 Add to bag
                 </button>
