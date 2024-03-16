@@ -5,7 +5,9 @@ export default function Header(){
         <>
             <header className="flex justify-between p-3 bg-[#debcbe] dark:bg-gray-950">
             <div>
-                <img.Biblion className="w-20"></img.Biblion>
+                <h1 className="mb-3 text-sm text-xl text-black uppercase dark:text-white">
+                   BIBLION
+                </h1>
             </div>
             </header>
         </>
