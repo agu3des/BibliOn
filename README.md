@@ -3,6 +3,9 @@
 
 `"Livraria Virtual"` - Aplicação que simula um sistema de um sebo. 
 
+### Figma
+https://www.figma.com/proto/HqNPoTWgJEQm1P2ZDPeInh/Biblion?node-id=204-1217&t=ZD2kEtYPJfuIIDJn-1
+
 ## Requisitos
 + `React`
 + `Supabase`
