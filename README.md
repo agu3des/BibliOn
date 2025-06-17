@@ -6,6 +6,9 @@
 ### Figma
 https://www.figma.com/proto/HqNPoTWgJEQm1P2ZDPeInh/Biblion?node-id=204-1217&t=ZD2kEtYPJfuIIDJn-1
 
+### Replit
+https://replit.com/@agu3des/Projeto-Biblion-React?v=1
+
 ## Requisitos
 + `React`
 + `Supabase`
